@@ -1,0 +1,37 @@
+create sequence UNIQUE_ID_SEQ increment by 1 minvalue 1000000;
+
+CREATE TABLE public.USERS (
+  id BIGINT NOT NULL DEFAULT NEXTVAL('UNIQUE_ID_SEQ'),
+  first_name varchar(100) ,
+  last_name varchar(100) ,
+  email varchar(100) ,
+  password varchar(100) ,
+  CONSTRAINT USERS_PK
+  PRIMARY KEY (id)
+);
+
+CREATE UNIQUE INDEX USERS_IDX ON USERS(ID);
+
+CREATE TABLE PUBLIC.CARS (
+  id BIGINT NOT NULL DEFAULT NEXTVAL('UNIQUE_ID_SEQ'),
+  name VARCHAR(100),
+  user_id INTEGER,
+  make VARCHAR(100),
+  model VARCHAR(100),
+  model_specific VARCHAR(100),
+  fuel_type VARCHAR(100),
+  milage_mixed REAL,
+  CONSTRAINT CARS_PK
+  PRIMARY KEY (id)
+);
+
+CREATE UNIQUE INDEX CARS_IDX ON CARS(ID);
+
+ALTER TABLE CARS
+ADD CONSTRAINT CARS_USER_ID_FK FOREIGN KEY (USER_ID) REFERENCES USERS(ID);
+
+/*
+DROP TABLE CARS CASCADE;
+DROP TABLE USERS CASCADE;
+drop sequence unique_id_seq;
+*/
