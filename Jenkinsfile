@@ -1,3 +1,4 @@
+#!groovy
 // see https://dzone.com/refcardz/continuous-delivery-with-jenkins-workflow for tutorial
 // see https://documentation.cloudbees.com/docs/cookbook/_pipeline_dsl_keywords.html for dsl reference
 // This Jenkinsfile should simulate a minimal Jenkins pipeline and can serve as a starting point.
@@ -8,7 +9,7 @@ node {
 
    // Get some code from a GitHub repository
    git url: 'https://github.com/RolfKristensen/JAVA_milageEntities'
-   sh 'git clean -fdx; sleep 4;'
+   sh 'git clean -fdx'
 
    // Get the maven tool.
    // ** NOTE: This 'mvn' maven tool must be configured
@@ -23,11 +24,11 @@ node {
 
    stage 'test'
    parallel 'test': {
-     sh "${mvnHome}/bin/mvn test; sleep 2;"
+     sh "${mvnHome}/bin/mvn test"
    }, 'verify': {
-     sh "${mvnHome}/bin/mvn verify; sleep 3"
+     sh "${mvnHome}/bin/mvn verify"
    }
 
    stage 'install in local repo'
-   sh "${mvnHome}/bin/mvn install"; sleep 4;
+   sh "${mvnHome}/bin/mvn install"
 }
