@@ -31,4 +31,9 @@ node {
 
    stage 'install in local repo'
    sh "${mvnHome}/bin/mvn install"
+
+   stage 'docker'
+   def dockerTool = tool 'docker'
+
+   sh "${dockerTool} ps"
 }
