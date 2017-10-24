@@ -28,12 +28,6 @@ node {
      sh "${mvnHome}/bin/mvn verify; sleep 3"
    }
 
-   stage 'archive'
-   archive 'target/*.jar'
-}
-
-
-node {
-   stage 'deploy Canary'
-   sh 'echo "write your deploy code here"; sleep 5;'
+   stage 'install in local repo'
+   sh "${mvnHome}/bin/mvn install"; sleep 4;
 }
