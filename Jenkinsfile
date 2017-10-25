@@ -35,5 +35,5 @@ node {
    stage 'docker'
    def dockerTool = tool 'docker'
 
-   sh "${dockerTool} ps"
-}
+   sh "docker ps"
+ }
