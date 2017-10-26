@@ -14,10 +14,10 @@ node {
        )
      ])
    ])
-   def pomVersion = readMavenPom file: 'pom.xml'
+   def pomTree = readMavenPom file: 'pom.xml'
    def buildVersion;
    if (params.buildVersion == 'NOT_DEFINED') {
-     buildVersion = pom.version
+     buildVersion = pomTree.version
    } else {
      buildVersion = params.buildVersion
    }
