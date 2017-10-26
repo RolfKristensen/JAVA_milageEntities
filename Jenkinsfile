@@ -22,7 +22,7 @@ node {
      buildVersion = params.buildVersion
    }
    currentBuild.displayName = "v${buildVersion}"
-   currentBuild.description = "Build version: ${buildVersion}, Branch: ${BRANCH}"
+   currentBuild.description = "Build version: ${buildVersion}, Branch: ${env.BRANCH_NAME}"
 
    // Mark the code checkout 'stage'....
    stage 'checkout'
