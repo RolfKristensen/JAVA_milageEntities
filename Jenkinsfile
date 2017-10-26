@@ -14,6 +14,14 @@ node {
        )
      ])
    ])
+
+   // Mark the code checkout 'stage'....
+   stage 'checkout'
+
+   // Get some code from a GitHub repository
+   git url: 'https://github.com/RolfKristensen/JAVA_milageEntities'
+   sh 'git clean -fdx'
+
    def pomTree = readMavenPom file: 'pom.xml'
    echo "pom version: ${pomTree.version}"
    echo "build parameter: {params.buildVersion}"
@@ -24,15 +32,9 @@ node {
    } else {
      buildVersion = params.buildVersion
    }
-   currentBuild.displayName = "v${buildVersion}"
+   currentBuild.displayName = "#${env.BUILD_NUMBER} v${buildVersion}"
    currentBuild.description = "Build version: ${buildVersion}, Branch: ${env.BRANCH_NAME}"
 
-   // Mark the code checkout 'stage'....
-   stage 'checkout'
-
-   // Get some code from a GitHub repository
-   git url: 'https://github.com/RolfKristensen/JAVA_milageEntities'
-   sh 'git clean -fdx'
 
    // Get the maven tool.
    // ** NOTE: This 'mvn' maven tool must be configured
