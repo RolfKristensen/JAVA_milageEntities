@@ -4,6 +4,16 @@
 // This Jenkinsfile should simulate a minimal Jenkins pipeline and can serve as a starting point.
 // NOTE: sleep commands are solelely inserted for the purpose of simulating long running tasks when you run the pipeline
 node {
+   // adds job parameters within jenkinsfile
+   properties([
+     parameters([
+       stringParam(
+         description: 'Define a specific build version',
+         name: 'bildVersion'
+       )
+     ])
+   ])
+
    // Mark the code checkout 'stage'....
    stage 'checkout'
 
