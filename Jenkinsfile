@@ -9,10 +9,20 @@ node {
      parameters([
        stringParam(
          description: 'Define a specific build version',
-         name: 'buildVersion'
+         name: 'buildVersion',
+         defaultValue: 'NOT_DEFINED'
        )
      ])
    ])
+   def pomVersion = readMavenPom file: 'pom.xml'
+   def buildVersion;
+   if (params.buildVersion == 'NOT_DEFINED') {
+     buildVersion = pom.version
+   } else {
+     buildVersion = params.buildVersion
+   }
+   currentBuild.displayName = "v${buildVersion}"
+   currentBuild.description = "Build version: ${buildVersion}, Branch: ${BRANCH}"
 
    // Mark the code checkout 'stage'....
    stage 'checkout'
@@ -29,8 +39,8 @@ node {
    stage 'build'
    // set the version of the build artifact to the Jenkins BUILD_NUMBER so you can
    // map artifacts to Jenkins builds
-   if (params.buildVersion != null) {
-     sh "${mvnHome}/bin/mvn versions:set -DnewVersion=${params.buildVersion}"
+   if (params.buildVersion == 'NOT_DEFINED') {
+     sh "${mvnHome}/bin/mvn versions:set -DnewVersion=${buildVersion}"
    }
    sh "${mvnHome}/bin/mvn package"
 
