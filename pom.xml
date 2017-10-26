@@ -10,6 +10,13 @@
 	<name>MilageEntities</name>
 	<url>http://maven.apache.org</url>
 
+	<distributionManagement>
+		<repository>
+			<id>nexus</id>
+			<url>${nexus.repository.url}</url>
+		</repository>
+	</distributionManagement>
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>

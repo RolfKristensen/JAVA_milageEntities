@@ -29,11 +29,6 @@ node {
      sh "${mvnHome}/bin/mvn verify"
    }
 
-   stage 'install in local repo'
-   sh "${mvnHome}/bin/mvn install"
-
-   stage 'docker'
-   def dockerTool = tool 'docker'
-
-   sh "docker ps"
+   stage 'install in nexus'
+   sh "${mvnHome}/bin/mvn deploy"
  }
