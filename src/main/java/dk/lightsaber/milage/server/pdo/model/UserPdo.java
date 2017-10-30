@@ -22,6 +22,8 @@ public class UserPdo extends BaseModel {
 	private String email;
 	@Column(name="password")
 	private String password;
+	@Column(name="auth_token")
+	private String authToken;
 	
 	@OneToMany(mappedBy="userPdo", fetch=FetchType.LAZY)
 	private List<CarPdo> cars;
@@ -60,6 +62,14 @@ public class UserPdo extends BaseModel {
 	public UserPdo setPassword(String password) {
 		this.password = password;
 		return this;
+	}
+
+	public String getAuthToken() {
+		return authToken;
+	}
+
+	public void setAuthToken(String authToken) {
+		this.authToken = authToken;
 	}
 
 	public List<CarPdo> getCars() {
