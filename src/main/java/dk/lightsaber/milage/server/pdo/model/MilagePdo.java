@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="MILAGES")
-public class Milage {
+public class MilagePdo {
 	@Id
 	@Column(name="ID")
 	private int id;
@@ -67,57 +67,57 @@ public class Milage {
 		return userId;
 	}
 
-	public Milage setCarId(int carId) {
+	public MilagePdo setCarId(int carId) {
 		this.carId = carId;
 		return this;
 	}
 
-	public Milage setGasStationId(int gasStationId) {
+	public MilagePdo setGasStationId(int gasStationId) {
 		this.gasStationId = gasStationId;
 		return this;
 	}
 
-	public Milage setGasTypeId(int gasTypeId) {
+	public MilagePdo setGasTypeId(int gasTypeId) {
 		this.gasTypeId = gasTypeId;
 		return this;
 	}
 
-	public Milage setId(int id) {
+	public MilagePdo setId(int id) {
 		this.id = id;
 		return this;
 	}
 
-	public Milage setKmDriven(float kmDriven) {
+	public MilagePdo setKmDriven(float kmDriven) {
 		this.kmDriven = kmDriven;
 		return this;
 	}
 
-	public Milage setKmL(float kmL) {
+	public MilagePdo setKmL(float kmL) {
 		this.kmL = kmL;
 		return this;
 	}
 
-	public Milage setLitresFuled(float litresFuled) {
+	public MilagePdo setLitresFuled(float litresFuled) {
 		this.litresFuled = litresFuled;
 		return this;
 	}
 
-	public Milage setpriceKm(float priceKm) {
+	public MilagePdo setpriceKm(float priceKm) {
 		this.priceKm = priceKm;
 		return this;
 	}
 
-	public Milage setPriceL(float priceL) {
+	public MilagePdo setPriceL(float priceL) {
 		this.priceL = priceL;
 		return this;
 	}
 
-	public Milage setPriceSum(float priceSum) {
+	public MilagePdo setPriceSum(float priceSum) {
 		this.priceSum = priceSum;
 		return this;
 	}
 
-	public Milage setUserId(int userId) {
+	public MilagePdo setUserId(int userId) {
 		this.userId = userId;
 		return this;
 	}
